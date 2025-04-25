@@ -1,10 +1,16 @@
 <template>
   <div class="navbar">
     <bar />
+    <breadcrumb />
+    <div class="navbar-right">
+      <avatar />
+    </div>
   </div>
 </template>
 <script setup>
 import bar from "./components/bar.vue";
+import breadcrumb from "./components/breadcrumb.vue";
+import avatar from "./components/avator.vue";
 </script>
 <style lang="scss" scoped>
 .navbar {

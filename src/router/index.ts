@@ -21,12 +21,12 @@ const routes = [
 
       {
         path: "/system/role",
-        name: "role",
+        name: "roles",
         component: () => import("@/views/system/role.vue"),
       },
       {
         path: "/system/menu",
-        name: "menu",
+        name: "menus",
         component: () => import("@/views/system/menu.vue"),
       },
 

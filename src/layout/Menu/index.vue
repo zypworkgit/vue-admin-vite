@@ -30,7 +30,9 @@
           <el-icon>
             <component :is="el.icon"></component>
           </el-icon>
-          <span>{{ el.name }}</span>
+          <span>{{ item.name }}</span>
+
+          <!-- <span>{{ $t(`menus.${el.path.substring(1)}`) }}</span> -->
         </template>
       </el-menu-item>
     </el-sub-menu>
