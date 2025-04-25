@@ -1,28 +1,73 @@
 <template>
   <div class="login-container">
-    <el-form :model="form" class="login-form">
+    <el-form ref="formRef" :model="form" class="login-form" :rules="rules">
       <div class="title-container">
         <h3 class="title">用户登录</h3>
       </div>
       <el-form-item label="账号：">
-        <svg-icon icon="user" class="svg-container"></svg-icon>
+        <svg-icon iconName="user" class="svg-container"></svg-icon>
         <el-input v-model="form.username"></el-input>
       </el-form-item>
       <el-form-item label="密码：">
-        <svg-icon icon="password" class="svg-container"></svg-icon>
-        <el-input type="password" v-model="form.password"></el-input>
+        <svg-icon iconName="password" class="svg-container"></svg-icon>
+        <el-input :type="passwordType" v-model="form.password"></el-input>
+        <svg-icon
+          :iconName="passwordType === 'password' ? 'eye' : 'eye-open'"
+          @click="changeType"
+        ></svg-icon>
       </el-form-item>
-      <el-button type="primary" class="login-button">登录</el-button>
+      <el-button type="primary" class="login-button" @click="handleLogin"
+        >登录</el-button
+      >
     </el-form>
   </div>
 </template>
 <script setup>
 import { ref } from "vue";
 import svgIcon from "@/components/SvgIcon/index.vue";
+import { usesUserStore } from "@/stores/user.js";
+
+const userStore = usesUserStore();
 const form = ref({
-  username: "",
-  password: "",
+  username: "admin",
+  password: "123456",
 });
+const formRef = ref(null);
+const rules = ref({
+  username: [
+    {
+      required: true,
+      message: "Please input Activity name",
+      trigger: "blur",
+    },
+  ],
+  password: [
+    {
+      required: true,
+      message: "Please input Activity name",
+      trigger: "blur",
+    },
+  ],
+});
+
+const handleLogin = async () => {
+  formRef.value.validate(async (valid) => {
+    if (valid) {
+      await userStore.toLogin(form.value);
+    } else {
+      console.log("error submit!!");
+      return false;
+    }
+  });
+};
+const passwordType = ref("password");
+const changeType = () => {
+  if (passwordType.value === "password") {
+    passwordType.value = "text";
+  } else {
+    passwordType.value = "password";
+  }
+};
 </script>
 
 <style lang="scss" scoped>

@@ -1,25 +1,29 @@
-<!--
- * @Author: liming-pan
- * @Date: 2022-01-29 08:57:54
- * @LastEditors: liming-pan
--->
 <template>
-  <svg class="svg-icon" aria-hidden="true">
-    <use :xlink:href="iconName"></use>
+  <svg
+    aria-hidden="true"
+    focusable="false"
+    role="img"
+    xmlns="http://www.w3.org/2000/svg"
+    :width="width"
+    :height="height"
+  >
+    <use :xlink:href="`#icon-${iconName}`" />
   </svg>
 </template>
 
 <script setup>
-import { defineProps, computed } from "vue";
+import { defineProps, ref, onMounted, computed } from "vue";
+import { defineAsyncComponent } from "vue";
 const props = defineProps({
-  icon: {
-    type: String,
-    required: true,
+  iconName: String,
+  width: {
+    type: [Number, String],
+    default: 24,
   },
-});
-
-const iconName = computed(() => {
-  return `#icon-${props.icon}`;
+  height: {
+    type: [Number, String],
+    default: 24,
+  },
 });
 </script>
 

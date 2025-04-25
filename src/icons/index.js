@@ -1,8 +1,1 @@
-import SvgIcon from '../components/SvgIcon/index.vue'
-const svgRequired = require.context('./svg', false, /\.svg$/)
-svgRequired.keys().forEach((element) => {
-  svgRequired(element)
-})
-export default (app) => {
-  app.component('svg-icon', SvgIcon)
-}
+import './svg/*.svg'; // 确保每个SVG文件都被导入一次。你也可以使用require.context来批量导入。例如：const req = require.context('./', false, /\.svg$/); req.keys().map(req);
