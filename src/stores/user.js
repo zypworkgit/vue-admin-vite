@@ -6,6 +6,7 @@ export const usesUserStore = defineStore('userStore', {
     state: () => ({
         token: localStorage.getItem('token') || '',
         siderType: true,
+        lang: localStorage.getItem('lang') || 'zh'
     }),
     actions: {
         async toLogin(data) {

@@ -3,6 +3,7 @@
     <bar />
     <breadcrumb />
     <div class="navbar-right">
+      <Lang class="navbar-item" />
       <avatar />
     </div>
   </div>
@@ -11,6 +12,7 @@
 import bar from "./components/bar.vue";
 import breadcrumb from "./components/breadcrumb.vue";
 import avatar from "./components/avator.vue";
+import Lang from "./components/lang.vue";
 </script>
 <style lang="scss" scoped>
 .navbar {
