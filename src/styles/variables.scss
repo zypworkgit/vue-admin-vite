@@ -13,7 +13,10 @@ $sideBarWidth: 210px;
 $hideSideBarWidth: 67px;
 $sideBarDuration: 0.28s;
 
-
+:root {
+  --sidebar-width: #{$sideBarWidth};
+  --hide-sidebar-width: #{$hideSideBarWidth};
+};
 :export {
   menuText: $menuText;
   menuActiveText: $menuActiveText;

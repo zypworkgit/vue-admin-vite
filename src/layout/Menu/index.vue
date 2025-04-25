@@ -7,6 +7,7 @@
     text-color="#fff"
     router
     unique-opened
+    :collapse="!userstore.siderType"
   >
     <el-sub-menu
       :index="item.id"
@@ -37,8 +38,9 @@
 </template>
 <script setup>
 import { menuList } from "@/api/menu.js";
-import { ref } from "vue";
-
+import { ref, computed } from "vue";
+import { usesUserStore } from "@/stores/user.js";
+const userstore = usesUserStore();
 const iconlist = ref(["user", "setting", "shop", "tickets", "pie-chart"]);
 const defaultActive = ref(sessionStorage.getItem("path") || "/system/user");
 const menusList = ref([]);
